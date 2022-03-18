@@ -20,18 +20,18 @@ const App = () => {
              message: "Kanye West arrested for murder of Pete Davidson"
         },
     ]);
-
+    let counter = 4;
     const handleUsernameChange = (e) => setUsername(e.target.value);
     const handleMessageChange = (e) => newMessage(e.target.value);
     const handleChirprSubmit = (e) => {
        e.preventDefault();
        
         const newChirp = {
-            id: 4
+            id: counter,
             username: username,
             message: message
         };
-
+        counter++
         setChirps([...chirps, newChirp]);
     }
     return (
@@ -43,7 +43,7 @@ const App = () => {
             <form action="">
                 <input type="text" value={username} onChange={handleUsernameChange}/>
                 <textarea value={message} onChange={handleMessageChange} cols="30" rows="10"></textarea>
-                <button onClick={handleSubmit}></button>
+                <button onClick={handleChirprSubmit}></button>
             </form>
 
             {chirps.map(chirp => <ChirprContainer key={chirp.id} username={chirp.username} message={chirp.message}/>)}
